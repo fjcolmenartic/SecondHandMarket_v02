@@ -16,6 +16,24 @@ public class SeguridadConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        super.configure(http);
+        http
+                .authorizeRequests()
+                    .antMatchers("/", "/webjars/**", "/css/**", "/h2-console/**", "/public/**", "/auth/**", "/files/**")
+                    .permitAll()
+                    .anyRequest().authenticated()
+                    .and()
+                .formLogin()
+                    .loginPage("/auth/login")
+                    .defaultSuccessUrl("/public/index", true)
+                    .loginProcessingUrl("/auth/login-post")
+                    .permitAll()
+                    .and()
+                .logout()
+                    .logoutUrl("/auth/logout")
+                    .logoutSuccessUrl("/public/index");
+
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
+
     }
 }
