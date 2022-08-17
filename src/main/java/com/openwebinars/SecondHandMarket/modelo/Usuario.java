@@ -37,12 +37,11 @@ public class Usuario {
 
     public Usuario() {}
 
-    public Usuario(long id, String nombre, String apellidos, String avatar, Date fechaAlta, String email, String password) {
+    public Usuario(String nombre, String apellidos, String avatar, String email, String password) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.avatar = avatar;
-        this.fechaAlta = fechaAlta;
         this.email = email;
         this.password = password;
     }
