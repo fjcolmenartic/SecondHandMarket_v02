@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
@@ -11,9 +13,12 @@ public class Producto {
 
     @Id
     @GeneratedValue
+    @Min(value=0)
     private long id;
 
+    @NotEmpty
     private String nombre;
+    @NotEmpty
     private float precio;
     private String imagen;
 

@@ -4,6 +4,9 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 import java.util.Objects;
 
@@ -13,9 +16,13 @@ public class Usuario {
 
     @Id
     @GeneratedValue
+    @Min(value=0)
     private long id;
 
+    @NotEmpty
     private String nombre;
+
+    @NotEmpty
     private String apellidos;
     private String avatar;
 
@@ -23,7 +30,9 @@ public class Usuario {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaAlta;
 
+    @Email
     private String email;
+    @NotEmpty
     private String password;
 
     public Usuario() {}

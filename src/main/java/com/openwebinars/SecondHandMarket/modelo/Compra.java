@@ -4,6 +4,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,6 +13,7 @@ import java.util.Objects;
 public class Compra {
 
     @Id @GeneratedValue
+    @Min(value=0)
     private long id;
 
     @CreatedDate
