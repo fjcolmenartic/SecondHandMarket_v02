@@ -5,4 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
     // Buscar usuario por su email
+    // Should be unique
+    Usuario findFirstByEmail(String email);
 }
